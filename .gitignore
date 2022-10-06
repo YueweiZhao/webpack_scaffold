@@ -1,0 +1,20 @@
+# logs
+npm-debug.log*
+.vscode
+.idea
+.log
+logs
+
+# dependencies
+node_modules
+**/node_modules/
+
+dist
+custom/dist
+.DS_Store
+.history/
+
+# log
+*.docx
+*.log
+*.log.*

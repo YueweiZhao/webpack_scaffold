@@ -1,0 +1,26 @@
+{
+  "name": "webpack_scaffold",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "core-js": "^3.19.1",
+    "css-loader": "^6.5.1",
+    "html-webpack-plugin": "^5.5.0",
+    "html-withimg-loader": "^0.1.16",
+    "mini-css-extract-plugin": "^2.4.4",
+    "webpack": "^5.61.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "scripts": {
+    "--1--": "dev：用于使用webpack打包",
+    "dev": "webpack --config webpack.config.js",
+    "--2--": "serve：webpack打包并启动服务，使用devServer的服务配置",
+    "server": "webpack serve --mode development"
+  }
+}
