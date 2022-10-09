@@ -1,25 +1,24 @@
-const path = require('path');
-const htmlWebpackPlugin = require('html-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const miniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require("path");
+const htmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const miniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-
-  mode: 'development',
+  mode: "development",
 
   entry: {
-    index: './src/js/index.js',
+    index: "./src/js/index.js",
   },
 
   output: {
     // 打包时，在包中包含所属模块的信息的注释，在入口文件下层目录生成.map文件
     pathinfo: true,
     // 输出文件的路径
-    path: path.resolve(__dirname, 'dist/'),
+    path: path.resolve(__dirname, "dist/"),
     // 输出的文件名，[name]代表输入文件名
-    filename: 'assets/[name]-[chunkhash:6].js',
+    filename: "assets/[name]-[chunkhash:6].js",
     // 静态bundle文件名称
-    assetModuleFilename: 'static/image/[name][ext]',
+    assetModuleFilename: "static/image/[name][ext]",
   },
 
   // module，入口文件只能是js和json，其他类型文件需要loader解析
@@ -40,10 +39,12 @@ module.exports = {
       // js打包工具
       {
         test: /\.js$/,
-        use: [{
-          loader: "babel-loader",
-          options: {},
-        }]
+        use: [
+          {
+            loader: "babel-loader",
+            options: {},
+          },
+        ],
       },
 
       // webPack5资源模块
@@ -55,12 +56,14 @@ module.exports = {
       // html-withimg-loader，打包html中的img文件
       {
         test: /\.html$/,
-        use: [{
-          loader: "html-withimg-loader",
-          options: {},
-        }],
-      }
-    ]
+        use: [
+          {
+            loader: "html-withimg-loader",
+            options: {},
+          },
+        ],
+      },
+    ],
   },
 
   // plugins，webpack打包插件，没有顺序，在webpack打包过程中的各个钩子中执行
@@ -72,17 +75,15 @@ module.exports = {
       // 输出的文件名
       filename: "index.html",
       // html要引入的chunk名称（入口），对应entry中的key
-      chunks: ["index"]
+      chunks: ["index"],
     }),
 
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [
-        '**/*',
-      ],
+      cleanOnceBeforeBuildPatterns: ["**/*"],
     }),
 
     new miniCssExtractPlugin({
-      filename: "assets/[name]-[chunkhash:6].css"
+      filename: "assets/[name]-[chunkhash:6].css",
     }),
   ],
 
@@ -95,16 +96,16 @@ module.exports = {
     // 本地跨域代理
     proxy: {
       // 本地请求"/api"的地址时会代理到"localhost:3000"进行请求
-      '/api': {
+      "/api": {
         // 代理地址
-        target: 'http://localhost:3000',
+        target: "http://localhost:3000",
         // 重写路径（将/api替换为空）
-        pathRewrite: { '^/api': '' },
+        pathRewrite: { "^/api": "" },
         // 使用https
         secure: false,
         // 覆盖主机源
         changeOrigin: true,
       },
-    }
-  }
+    },
+  },
 };
